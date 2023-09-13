@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<?import com.jfoenix.controls.JFXToggleButton?>
+<?import javafx.animation.TranslateTransition?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Circle?>
+
+<AnchorPane id="telaLogin" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+   minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/20.0.1"
+   xmlns:fx="http://javafx.com/fxml/1"
+   fx:controller="com.rosendo.company.Controllers.Fxml.Login.LoginControllerFxml">
+   <children>
+      <ImageView fitHeight="600.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true" />
+      <AnchorPane id="backgroundLogin" layoutX="550.0" prefHeight="600.0" prefWidth="350.0"
+         style="-fx-background-color: #ffffff;">
+         <children>
+
+            <Text id="tituloTelaLogin" styleClass="tituloTelaLogin" layoutX="20.0" layoutY="60.0"
+               strokeType="OUTSIDE" strokeWidth="0.0" text="Bem-vindo">
+            </Text>
+
+            <Text id="textLogin" fill="#3570d4" layoutX="32.0" layoutY="135.0" strokeType="OUTSIDE"
+               strokeWidth="0.0" styleClass="textFieldTop" text="Login">
+            </Text>
+
+            <TextField id="textFieldLogin" layoutX="25.0" layoutY="150.0" prefHeight="35.0"
+               prefWidth="300.0" promptText="Insira seu usuário" styleClass="inputEmail">
+            </TextField>
+
+            <Text id="textPassword" layoutX="32.0" layoutY="220.0"
+               strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textFieldTop" text="Senha">
+            </Text>
+
+            <PasswordField id="textFieldPassword" layoutX="25.0" layoutY="235.0" prefHeight="35.0"
+               prefWidth="300.0" promptText="Insira sua senha" styleClass="inputPassword" />
+
+
+            <JFXToggleButton fx:id="toggleButton" layoutX="10.0" layoutY="275.0" onAction="#handleToggleButton" text="Lembrar-me" >
+               <graphic>
+                  <Circle fx:id="circle" radius="10.0" fill="#2196F3" />
+               </graphic>
+            </JFXToggleButton>
+
+            <Hyperlink layoutX="182" layoutY="291.5" styleClass="textLink"
+               text="Esqueceu a senha?" />
+
+            <Button layoutX="25.0" layoutY="350.0" mnemonicParsing="false" prefHeight="35.0"
+               prefWidth="300.0" style="-fx-background-color: #005557;" text="Login"
+               textFill="WHITE" styleClass="buttonLogin">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+
+            <Text id="textLogin" fill="#3570d4" layoutX="50.0" layoutY="420.0" strokeType="OUTSIDE"
+               strokeWidth="0.0" styleClass="informationLogin" text="Não tem conta ainda?">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+
+            <Hyperlink layoutX="205.0" layoutY="402.0" styleClass="textLink" text="Registre-se" />
+
+            <Text id="textLogin" fill="#3570d4" layoutX="80.0" layoutY="580.5" strokeType="OUTSIDE"
+               strokeWidth="0.0" styleClass="version" text="0.0.01">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+
+            <Text id="textLogin" fill="#3570d4" layoutX="30.0" layoutY="580.0" strokeType="OUTSIDE"
+               strokeWidth="0.0" styleClass="version" text="Versão:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+
+            <Button fx:id="closeWindow" onAction="#handleCloseButtonClick" layoutX="257.0"
+               layoutY="561.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="67.0"
+               style="-fx-background-color: transparent;" text="Sair" textFill="rgba(6, 75, 105, 0.74)">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
