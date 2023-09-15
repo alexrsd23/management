@@ -1,0 +1,71 @@
+/* Estilos para a tela inicial */
+#telaInicial {
+    -fx-background-color: #f8f8f8;
+}
+
+/* Estilos para o fundo do formulário */
+#backgroundFormulario {
+    -fx-background-color: #fff;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+}
+
+/* Estilos para o título "Categoria" */
+#tituloCategoria {
+    -fx-font-size: 16px;
+    -fx-fill: #000;
+}
+
+/* Estilos para a área de texto "TextAreaInicio" */
+#TextAreaInicio {
+    -fx-pref-width: 180px;
+    -fx-pref-height: 125px;
+    -fx-font-size: 10px;
+    -fx-text-wrap: true;
+}
+
+/* Estilos para o campo "campoNome" */
+#campoNome {
+    -fx-pref-width: 700px;
+    -fx-pref-height: 35px;
+}
+
+/* Estilos para o campo "campoDropdown" */
+#campoDropdown {
+    -fx-pref-width: 165px;
+    -fx-pref-height: 35px;
+}
+
+/* Estilos para o botão "botaoDropdown" */
+#botaoDropdown {
+    -fx-pref-width: 35px;
+    -fx-pref-height: 35px;
+}
+
+/* Estilos para o campo "campoFornecedor" */
+#campoFornecedor {
+    -fx-pref-width: 450px;
+    -fx-pref-height: 35px;
+}
+
+/* Estilos para o campo "campogeral" */
+#campogeral {
+    -fx-pref-width: 200px;
+    -fx-pref-height: 35px;
+}
+
+/* Estilos para o botão "abrirFxmlButton" */
+#abrirFxmlButton {
+    -fx-background-color: #0066ff; /* Cor de fundo azul */
+    -fx-text-fill: #ffffff; /* Cor do texto branco */
+    -fx-pref-width: 248px;
+    -fx-pref-height: 30px;
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
+    -fx-font-weight: 800;
+}
+
+/* Estilos para o botão "abrirFxmlButton" quando hover */
+#abrirFxmlButton:hover {
+    -fx-background-color: #436CFF; /* Cor de fundo azul mais escura quando hover */
+}

@@ -99,11 +99,12 @@ public class CadastroProdutoController {
         popup = new Popup();
         AnchorPane paneEmBranco = new AnchorPane();
         paneEmBranco.setStyle("-fx-background-color: white; -fx-border-color:#d8d8d8");
-        paneEmBranco.setPrefSize(200, 100);
+        paneEmBranco.setPrefSize(250, 300);
 
-        Button abrirFxmlButton = new Button("Abrir Outro FXML");
-        abrirFxmlButton.setLayoutX(10.0);
-        abrirFxmlButton.setLayoutY(10.0);
+        Button abrirFxmlButton = new Button("Adicionar nova categoria");
+        abrirFxmlButton.setId("abrirFxmlButton");
+        abrirFxmlButton.setLayoutX(2);
+        abrirFxmlButton.setLayoutY(2);
         abrirFxmlButton.setOnAction(e -> abrirOutroFXML());
 
         paneEmBranco.getChildren().add(abrirFxmlButton);
@@ -133,17 +134,28 @@ public class CadastroProdutoController {
 
     private void abrirOutroFXML() {
         try {
+            // Verifica se o popup está aberto e o fecha
+            if (popup != null && popup.isShowing()) {
+                popup.hide();
+            }
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Cadastro/cadastro-categoria.fxml"));
             Parent root = loader.load();
 
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
 
+            // Configura a janela principal como proprietário da nova janela
+            stage.initOwner(categoriaTextField.getScene().getWindow());
+
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+
+
 
     @FXML
     void cancelarAcao(ActionEvent event) {

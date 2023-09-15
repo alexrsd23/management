@@ -6,6 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.util.Objects;
+
 public class Principal extends Application {
     public static void main(String[] args) {
         launch(args);
@@ -13,9 +15,9 @@ public class Principal extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Cadastro/cadastro-produto.fxml"));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/Cadastro/cadastro-produto.fxml")));
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("/Css/cadastro-produto.css").toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Css/style-cadastro-produto.css")).toExternalForm());
 
         primaryStage.setResizable(false);
         primaryStage.setScene(scene);
