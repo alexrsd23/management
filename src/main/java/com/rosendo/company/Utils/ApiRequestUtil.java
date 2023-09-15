@@ -38,4 +38,34 @@ public class ApiRequestUtil {
             return false;
         }
     }
+
+    public static String sendGetRequest(String endpoint) {
+        try {
+            URL url = new URL(API_BASE_URL + endpoint);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+
+            connection.setRequestMethod("GET");
+
+            int responseCode = connection.getResponseCode();
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                // A solicitação foi bem-sucedida, leia a resposta
+                try (BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
+                    StringBuilder response = new StringBuilder();
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        response.append(line);
+                    }
+                    return response.toString();
+                }
+            } else {
+                // Trate erros de acordo com o código de resposta
+                return null; // Ou lance uma exceção adequada
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Trate exceções de conexão aqui
+            return null; // Ou lance uma exceção adequada
+        }
+    }
+
 }

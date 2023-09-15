@@ -69,3 +69,7 @@
 #abrirFxmlButton:hover {
     -fx-background-color: #436CFF; /* Cor de fundo azul mais escura quando hover */
 }
+
+.list-cell:hover {
+    -fx-background-color: #f0f0f0; /* Altere para a cor desejada */
+}
