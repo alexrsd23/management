@@ -19,7 +19,7 @@
 <AnchorPane id="telaLogin" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
    minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/20.0.1"
    xmlns:fx="http://javafx.com/fxml/1"
-   fx:controller="com.rosendo.company.Controllers.Fxml.Login.LoginControllerFxml">
+   fx:controller="com.rosendo.company.Controllers.FXMLControllers.Login.LoginControllerFxml">
    <children>
       <ImageView fitHeight="600.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true" />
       <AnchorPane id="backgroundLogin" layoutX="550.0" prefHeight="600.0" prefWidth="350.0"

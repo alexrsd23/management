@@ -13,7 +13,7 @@ public class Principal extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/cadastro-produto.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Cadastro/cadastro-produto.fxml"));
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("/Css/cadastro-produto.css").toExternalForm());
 

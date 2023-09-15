@@ -1,4 +1,4 @@
-package com.rosendo.company.Controllers.Fxml.Login;
+package com.rosendo.company.Controllers.FXMLControllers.Login;
 
 import com.jfoenix.controls.JFXToggleButton;
 import javafx.animation.TranslateTransition;
