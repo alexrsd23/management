@@ -3,6 +3,7 @@ package com.rosendo.company.Controllers.FXMLControllers.Cadastro;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -142,5 +143,17 @@ public class CadastroProdutoController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    void cancelarAcao(ActionEvent event) {
+        // Obtém a referência ao nó (botão "Cancelar") que disparou o evento
+        Node source = (Node) event.getSource();
+
+        // Obtém a referência à janela atual
+        Stage stage = (Stage) source.getScene().getWindow();
+
+        // Fecha a janela
+        stage.close();
     }
 }

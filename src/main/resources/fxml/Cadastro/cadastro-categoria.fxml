@@ -10,10 +10,10 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.rosendo.company.Controllers.FXMLControllers.Cadastro.CadastroCategoriaController">
    <children>
       <Text layoutX="25.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome da Categoria" />
-      <TextField layoutX="25.0" layoutY="60.0" prefHeight="25.0" prefWidth="450.0" />
+      <TextField layoutX="25.0" layoutY="60.0" prefHeight="25.0" prefWidth="450.0" fx:id="nomeCategoriaField" />
       <Text layoutX="25.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrição" />
-      <Button layoutX="100.0" layoutY="250.0" mnemonicParsing="false" prefWidth="100.0" text="Cancelar" />
-      <Button layoutX="300.0" layoutY="250.0" mnemonicParsing="false" prefWidth="100.0" text="Registrar" />
-      <TextArea layoutX="25.0" layoutY="130.0" prefHeight="100.0" prefWidth="450.0" />
+      <Button layoutX="100.0" layoutY="250.0" mnemonicParsing="false" prefWidth="100.0" text="Cancelar" onAction="#cancelarAcao" />
+      <Button layoutX="300.0" layoutY="250.0" mnemonicParsing="false" prefWidth="100.0" text="Registrar" onAction="#registrarCategoria" />
+      <TextArea layoutX="25.0" layoutY="130.0" prefHeight="100.0" prefWidth="450.0" fx:id="descricaoArea" />
    </children>
 </AnchorPane>

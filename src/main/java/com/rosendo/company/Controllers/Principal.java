@@ -17,7 +17,7 @@ public class Principal extends Application {
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("/Css/cadastro-produto.css").toExternalForm());
 
-        primaryStage.setResizable(true);
+        primaryStage.setResizable(false);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
