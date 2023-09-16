@@ -3,6 +3,7 @@ package com.rosendo.company.Controllers.FXMLControllers.Cadastro;
 import com.rosendo.company.Utils.CategoriaPopupUtil;
 import com.rosendo.company.Utils.ImageSelectionUtil;
 import com.rosendo.company.Utils.MarcaPopupUtil;
+import com.rosendo.company.Utils.PopupUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -39,9 +40,8 @@ public class CadastroProdutoController {
     private Popup popupMarca;
 
     private ImageSelectionUtil imageSelectionUtil;
-    private MarcaPopupUtil marcaPopupUtil;
-
-    private CategoriaPopupUtil categoriaPopupUtil;
+    private PopupUtil marcaPopupUtil;
+    private PopupUtil categoriaPopupUtil;
 
     // Método de inicialização
     public void initialize() {
@@ -78,14 +78,12 @@ public class CadastroProdutoController {
 
     @FXML
     private void alternarPopupMarca(ActionEvent event) throws JSONException {
-        // Alternar o popup de seleção de marca
-        marcaPopupUtil.alternarPopupMarca();
+        marcaPopupUtil.togglePopup();
     }
 
     @FXML
     private void alternarPopup(ActionEvent event) throws JSONException {
-        // Alternar o popup de seleção de categoria
-        categoriaPopupUtil.alternarPopup();
+        categoriaPopupUtil.togglePopup();
     }
 
     // Método para cancelar ação
