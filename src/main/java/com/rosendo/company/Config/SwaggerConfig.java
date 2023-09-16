@@ -25,6 +25,7 @@ public class SwaggerConfig {
                 .tags(Arrays.asList(
                         new Tag().name("Endereços").description("Operações relacionadas aos endereços"),
                         new Tag().name("Categorias").description("Operações relacionadas as categorias"),
+                        new Tag().name("Marcas").description("Operações relacionadas as marcas"),
                         new Tag().name("Venda de Itens").description("Operações relacionadas as vendas de itens"),
                         new Tag().name("Vendas").description("Operações relacionadas as vendas"),
                         new Tag().name("Produtos").description("Operações relacionadas aos produtos"),

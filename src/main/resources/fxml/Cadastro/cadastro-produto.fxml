@@ -25,7 +25,14 @@
             </AnchorPane>
 
             <Text id="tituloCategoria" layoutX="275.0" layoutY="140.0" text="Marca" />
-            <ComboBox id="campogeral" layoutX="275.0" layoutY="150.0" />
+            <AnchorPane layoutX="275.0" layoutY="150.0">
+               <children>
+                  <HBox>
+                     <TextField  id="campoDropdown" fx:id="marcaTextField"/>
+                     <Button id="botaoDropdownMarca" text="▼" onAction="#alternarPopupMarca" />
+                  </HBox>
+               </children>
+            </AnchorPane>
 
             <Text id="tituloCategoria"  layoutX="525.0" layoutY="140.0" text="Unidade" />
             <ComboBox id="campogeral"  layoutX="525.0" layoutY="150.0" />
