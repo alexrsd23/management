@@ -5,7 +5,7 @@ import javafx.scene.control.TextField;
 public class MarcaPopupUtil extends PopupUtil {
 
     public MarcaPopupUtil(TextField textField, TextField searchField) {
-        super(textField, "/fxml/Cadastro/cadastro-marca.fxml", searchField);
+        super(textField, "cadastro-marca.fxml", searchField);
     }
 
 

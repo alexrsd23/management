@@ -19,7 +19,7 @@
                <children>
                   <HBox>
                      <TextField  id="campoDropdown" fx:id="categoriaTextField"/>
-                     <Button id="botaoDropdown" text="▼" onAction="#alternarPopup" />
+                     <Button id="botaoDropdown" text="▼" onAction="#alternarPopup" layoutX="165.0" />
                   </HBox>
                </children>
             </AnchorPane>
@@ -29,13 +29,20 @@
                <children>
                   <HBox>
                      <TextField  id="campoDropdown" fx:id="marcaTextField"/>
-                     <Button id="botaoDropdownMarca" text="▼" onAction="#alternarPopupMarca" />
+                     <Button id="botaoDropdownMarca" text="▼" onAction="#alternarPopupMarca" layoutX="165.0"/>
                   </HBox>
                </children>
             </AnchorPane>
 
-            <Text id="tituloCategoria"  layoutX="525.0" layoutY="140.0" text="Unidade" />
-            <ComboBox id="campogeral"  layoutX="525.0" layoutY="150.0" />
+            <Text id="tituloCategoria" layoutX="525.0" layoutY="140.0" text="Unidade" />
+            <AnchorPane layoutX="525.0" layoutY="150.0">
+               <children>
+                  <HBox>
+                     <TextField  id="campoDropdown" fx:id="unidadeTextField"/>
+                     <Button id="botaoDropdownUnidade" text="▼" onAction="#alternarPopupUnidade" layoutX="165.0"/>
+                  </HBox>
+               </children>
+            </AnchorPane>
 
             <Text id="tituloCategoria"  layoutX="25.0" layoutY="230.0" text="Peso Liquido" />
             <TextField id="campogeral"  layoutX="25.0" layoutY="240.0" />

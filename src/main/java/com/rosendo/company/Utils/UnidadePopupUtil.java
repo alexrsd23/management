@@ -2,34 +2,37 @@ package com.rosendo.company.Utils;
 
 import javafx.scene.control.TextField;
 
-public class CategoriaPopupUtil extends PopupUtil {
+public class UnidadePopupUtil extends PopupUtil {
 
-    public CategoriaPopupUtil(TextField textField, TextField searchField) {
-        super(textField, "cadastro-categoria.fxml", searchField);
+    public UnidadePopupUtil(TextField textField, TextField searchField) {
+        super(textField, "cadastro-unidade.fxml", searchField);
     }
+
 
     @Override
     protected String getApiEndpoint() {
-        return "/category";
+        return "/unity";
     }
 
     @Override
     protected String getAddButtonText() {
-        return "Adicionar nova categoria";
+        return "Adicionar nova unidade";
     }
 
     @Override
     protected String getAddButtonId() {
-        return "abrirFxmlButton";
+        return "abrirFxmlButtonUnidade";
     }
 
     @Override
     protected double getDesiredX() {
-        return 182.0;
+        return 682.0;
     }
 
     @Override
     protected double getDesiredY() {
         return 240.0;
     }
+
+
 }

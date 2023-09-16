@@ -82,6 +82,7 @@ public abstract class PopupUtil {
     protected TextField createSearchField() {
         TextField searchField = new TextField();
         searchField.setPromptText("Pesquisar...");
+        searchField.setId("buscaLista");
         searchField.setLayoutX(2);
         searchField.setLayoutY(30); // Posição abaixo do botão e acima da lista
         searchField.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -94,7 +95,7 @@ public abstract class PopupUtil {
         listView = new ListView<>();
         listView.setLayoutX(2);
         listView.setLayoutY(60); // Posição abaixo do campo de busca
-        listView.setPrefSize(246, 175);
+        listView.setPrefSize(248, 175);
 
         String response = ApiRequestUtil.sendGetRequest(getApiEndpoint());
 

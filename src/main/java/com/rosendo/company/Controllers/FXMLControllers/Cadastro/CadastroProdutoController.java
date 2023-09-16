@@ -1,9 +1,6 @@
 package com.rosendo.company.Controllers.FXMLControllers.Cadastro;
 
-import com.rosendo.company.Utils.CategoriaPopupUtil;
-import com.rosendo.company.Utils.ImageSelectionUtil;
-import com.rosendo.company.Utils.MarcaPopupUtil;
-import com.rosendo.company.Utils.PopupUtil;
+import com.rosendo.company.Utils.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -34,19 +31,27 @@ public class CadastroProdutoController {
     @FXML
     private TextField marcaTextField;
 
+    @FXML
+    private TextField unidadeTextField;
+
     // Efeitos e popups
     private ColorAdjust grayscaleEffect = new ColorAdjust();
     private Popup popup;
     private Popup popupMarca;
+    private Popup popupUnidade;
     private Popup currentPopup;
 
     private ImageSelectionUtil imageSelectionUtil;
     private PopupUtil marcaPopupUtil;
     private PopupUtil categoriaPopupUtil;
+    private PopupUtil unidadePopupUtil;
     @FXML
     private TextField marcaSearchField;
     @FXML
     private TextField categoriaSearchField;
+
+    @FXML
+    private TextField unidadeSearchField;
 
     // Método de inicialização
     public void initialize() {
@@ -55,6 +60,7 @@ public class CadastroProdutoController {
         imageSelectionUtil.initialize();
         marcaPopupUtil = new MarcaPopupUtil(marcaTextField, marcaSearchField);
         categoriaPopupUtil = new CategoriaPopupUtil(categoriaTextField, categoriaSearchField);
+        unidadePopupUtil = new UnidadePopupUtil(unidadeTextField, unidadeSearchField);
     }
 
 
@@ -85,6 +91,11 @@ public class CadastroProdutoController {
     @FXML
     private void alternarPopupMarca(ActionEvent event) throws JSONException {
         marcaPopupUtil.togglePopup();
+    }
+
+    @FXML
+    private void alternarPopupUnidade(ActionEvent event) throws JSONException {
+        unidadePopupUtil.togglePopup();
     }
 
     @FXML

@@ -32,7 +32,9 @@ public class Product {
     private Boolean changePrice;
     private Integer currentInventory;
     private Integer stockLimit;
-    private String unit;
+    @ManyToOne
+    @JoinColumn(name = "unity_id")
+    private Brand unity;
     private Boolean fractionalSale;
     private Boolean sellPromotion;
     private LocalDate promotionStartDate;
@@ -175,12 +177,12 @@ public class Product {
         this.stockLimit = stockLimit;
     }
 
-    public String getUnit() {
-        return unit;
+    public Brand getUnity() {
+        return unity;
     }
 
-    public void setUnit(String unit) {
-        this.unit = unit;
+    public void setUnity(Brand unity) {
+        this.unity = unity;
     }
 
     public Boolean getFractionalSale() {
@@ -226,7 +228,7 @@ public class Product {
     public Product() {
     }
 
-    public Product(Long id, String image, String name, String description, Integer amount, Category category, Supplier supplier, LocalDate register, String barcode, Brand brand, BigDecimal netWeight, BigDecimal grossWeight, BigDecimal salePrice, BigDecimal costPrice, Boolean changePrice, Integer currentInventory, Integer stockLimit, String unit, Boolean fractionalSale, Boolean sellPromotion, LocalDate promotionStartDate, LocalDate endDatePromotion, Double promotionalPrice) {
+    public Product(Long id, String image, String name, String description, Integer amount, Category category, Supplier supplier, LocalDate register, String barcode, Brand brand, BigDecimal netWeight, BigDecimal grossWeight, BigDecimal salePrice, BigDecimal costPrice, Boolean changePrice, Integer currentInventory, Integer stockLimit, Brand unity, Boolean fractionalSale, Boolean sellPromotion, LocalDate promotionStartDate, LocalDate endDatePromotion, Double promotionalPrice) {
         this.id = id;
         this.image = image;
         this.name = name;
@@ -244,7 +246,7 @@ public class Product {
         this.changePrice = changePrice;
         this.currentInventory = currentInventory;
         this.stockLimit = stockLimit;
-        this.unit = unit;
+        this.unity = unity;
         this.fractionalSale = fractionalSale;
         this.sellPromotion = sellPromotion;
         this.promotionStartDate = promotionStartDate;

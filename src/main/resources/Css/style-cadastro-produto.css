@@ -1,6 +1,6 @@
 /* Estilos para a tela inicial */
 #telaInicial {
-    -fx-background-color: #f8f8f8;
+    -fx-background-color: #E5E5E5;
 }
 
 /* Estilos para o fundo do formulário */
@@ -8,6 +8,22 @@
     -fx-background-color: #fff;
     -fx-background-radius: 8;
     -fx-border-radius: 8;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.08), 4, 0, 1, 2);
+}
+
+/* Estilos para TextField */
+TextField{
+    -fx-border-radius: 6px;
+    -fx-border-width: 1px;
+    -fx-border-color: rgba(0, 0, 0, 0.08);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.12), 0.9, 0, 0px, 0.3px), dropshadow(gaussian, rgba(0, 0, 0, 0.16), 3.6, 0, 0px, 1.6px);
+}
+
+/* Estilos para TextField quando focado */
+TextField:focused {
+    -fx-border-color: #CACACA;
+    -fx-background-color: #FFF;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.08), 4, 0, 1, 2);
 }
 
 /* Estilos para o título "Categoria" */
@@ -32,12 +48,14 @@
 
 /* Estilos para o campo "campoDropdown" */
 #campoDropdown {
+
     -fx-pref-width: 165px;
     -fx-pref-height: 35px;
 }
 
 /* Estilos para o botão "botaoDropdown" */
 #botaoDropdown {
+    -fx-background-radius: 0;
     -fx-pref-width: 35px;
     -fx-pref-height: 35px;
 }
@@ -55,21 +73,43 @@
 }
 
 /* Estilos para o botão "abrirFxmlButton" */
-#abrirFxmlButton {
+#abrirFxmlButton, #abrirFxmlButtonMarca, #abrirFxmlButtonUnidade {
     -fx-background-color: #0066ff; /* Cor de fundo azul */
     -fx-text-fill: #ffffff; /* Cor do texto branco */
     -fx-pref-width: 248px;
     -fx-pref-height: 30px;
     -fx-background-radius: 0;
     -fx-border-radius: 0;
-    -fx-font-weight: 800;
+    -fx-font-weight:800 ;
 }
 
 /* Estilos para o botão "abrirFxmlButton" quando hover */
-#abrirFxmlButton:hover {
-    -fx-background-color: #436CFF; /* Cor de fundo azul mais escura quando hover */
+#abrirFxmlButton:hover, #abrirFxmlButtonMarca:hover, #abrirFxmlButtonUnidade:hover {
+   -fx-background-color:#436CFF; /* Cor de fundo azul mais escura quando hover */
+}
+
+#buscaLista{
+    -fx-pref-width: 248px;
+    -fx-pref-height: 15px;
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
 }
 
 .list-cell:hover {
-    -fx-background-color: #f0f0f0; /* Altere para a cor desejada */
+   -fx-background-color:#03A9F4; /* Altere para a cor desejada */
+}
+
+#botaoDropdown, #botaoDropdownMarca, #botaoDropdownUnidade{
+    -fx-background-radius: 0;
+    -fx-pref-width: 35px;
+    -fx-pref-height: 35px;
+    -fx-border-width: 1px;
+    -fx-border-color: rgba(0, 0, 0, 0.08);
+}
+
+#botaoDropdown:focused, #botaoDropdownMarca:focused, #botaoDropdownUnidade:focused {
+    -fx-background-radius: 0;
+    -fx-border-color: #CACACA;
+    -fx-background-color: #FFF;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.08), 4, 0, 1, 2);
 }
