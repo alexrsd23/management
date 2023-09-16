@@ -22,7 +22,9 @@ public class Product {
     private Supplier supplier;
     private LocalDate register;
     private String barcode;
-    private String brand;
+    @ManyToOne
+    @JoinColumn(name = "brand_id")
+    private Brand brand;
     private BigDecimal netWeight;
     private BigDecimal grossWeight;
     private BigDecimal salePrice;
@@ -109,11 +111,11 @@ public class Product {
         this.barcode = barcode;
     }
 
-    public String getBrand() {
+    public Brand getBrand() {
         return brand;
     }
 
-    public void setBrand(String brand) {
+    public void setBrand(Brand brand) {
         this.brand = brand;
     }
 
@@ -224,7 +226,7 @@ public class Product {
     public Product() {
     }
 
-    public Product(Long id, String image, String name, String description, Integer amount, Category category, Supplier supplier, LocalDate register, String barcode, String brand, BigDecimal netWeight, BigDecimal grossWeight, BigDecimal salePrice, BigDecimal costPrice, Boolean changePrice, Integer currentInventory, Integer stockLimit, String unit, Boolean fractionalSale, Boolean sellPromotion, LocalDate promotionStartDate, LocalDate endDatePromotion, Double promotionalPrice) {
+    public Product(Long id, String image, String name, String description, Integer amount, Category category, Supplier supplier, LocalDate register, String barcode, Brand brand, BigDecimal netWeight, BigDecimal grossWeight, BigDecimal salePrice, BigDecimal costPrice, Boolean changePrice, Integer currentInventory, Integer stockLimit, String unit, Boolean fractionalSale, Boolean sellPromotion, LocalDate promotionStartDate, LocalDate endDatePromotion, Double promotionalPrice) {
         this.id = id;
         this.image = image;
         this.name = name;

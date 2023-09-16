@@ -4,8 +4,8 @@ import javafx.scene.control.TextField;
 
 public class CategoriaPopupUtil extends PopupUtil {
 
-    public CategoriaPopupUtil(TextField textField) {
-        super(textField, "cadastro-categoria.fxml"); // Passa o nome do arquivo FXML
+    public CategoriaPopupUtil(TextField textField, TextField searchField) {
+        super(textField, "/fxml/Cadastro/cadastro-categoria.fxml", searchField);
     }
 
     @Override

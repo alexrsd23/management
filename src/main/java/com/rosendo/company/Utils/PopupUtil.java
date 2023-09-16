@@ -1,5 +1,4 @@
 package com.rosendo.company.Utils;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
@@ -21,19 +20,29 @@ public abstract class PopupUtil {
 
     protected TextField textField;
     protected Popup popup;
+    protected String fxmlFileName;
+    protected TextField searchField; // Campo de pesquisa
+    protected ListView<String> listView; // ListView
+    protected ObservableList<String> itemNames; // Lista de itens
 
-    protected String fxmlFileName; // Campo para armazenar o nome do arquivo FXML
+    protected ObservableList<String> filteredItemNames;
 
-    public PopupUtil(TextField textField, String fxmlFileName) {
+
+    // Construtor
+    public PopupUtil(TextField textField, String fxmlFileName, TextField searchField) {
         this.textField = textField;
         this.popup = new Popup();
         this.fxmlFileName = fxmlFileName;
+        this.searchField = searchField;
+        this.filteredItemNames = FXCollections.observableArrayList();
     }
+
+
 
     public void togglePopup() throws JSONException {
         if (popup == null || !popup.isShowing()) {
             createPopup();
-            showPopup(); // Chame o método protegido showPopup
+            showPopup();
         } else {
             popup.hide();
         }
@@ -45,7 +54,10 @@ public abstract class PopupUtil {
         Button addButton = createAddButton();
         ListView<String> listView = createListView();
 
-        blankPane.getChildren().addAll(addButton, listView);
+        // Adicione o campo de busca
+        searchField = createSearchField();
+        blankPane.getChildren().addAll(addButton, searchField, listView);
+
         blankPane.setOnMouseClicked(e -> popup.hide());
         popup.setOnHidden(e -> destroyPopup());
         popup.getContent().add(blankPane);
@@ -67,25 +79,38 @@ public abstract class PopupUtil {
         return addButton;
     }
 
+    protected TextField createSearchField() {
+        TextField searchField = new TextField();
+        searchField.setPromptText("Pesquisar...");
+        searchField.setLayoutX(2);
+        searchField.setLayoutY(30); // Posição abaixo do botão e acima da lista
+        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+            filterList(newValue);
+        });
+        return searchField;
+    }
+
     protected ListView<String> createListView() throws JSONException {
-        ListView<String> listView = new ListView<>();
+        listView = new ListView<>();
         listView.setLayoutX(2);
-        listView.setLayoutY(40);
-        listView.setPrefSize(246, 215);
+        listView.setLayoutY(60); // Posição abaixo do campo de busca
+        listView.setPrefSize(246, 175);
 
         String response = ApiRequestUtil.sendGetRequest(getApiEndpoint());
 
         if (response != null) {
             JSONArray jsonArray = new JSONArray(response);
-            ObservableList<String> itemNames = FXCollections.observableArrayList();
+            itemNames = FXCollections.observableArrayList(); // Remova esta linha
+            filteredItemNames = FXCollections.observableArrayList(); // Adicione esta linha
 
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject item = jsonArray.getJSONObject(i);
                 String itemName = item.getString("name");
                 itemNames.add(itemName);
+                filteredItemNames.add(itemName); // Adicione o item à lista filtrada
             }
 
-            listView.setItems(itemNames);
+            listView.setItems(filteredItemNames); // Altere para usar a lista filtrada
 
             listView.setOnMouseClicked(event -> {
                 String selectedItem = listView.getSelectionModel().getSelectedItem();
@@ -100,6 +125,7 @@ public abstract class PopupUtil {
 
         return listView;
     }
+
 
     protected void showPopup() {
         double desiredX = getDesiredX();
@@ -145,6 +171,19 @@ public abstract class PopupUtil {
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    // Método para filtrar a lista com base no texto do campo de busca
+    private void filterList(String filter) {
+        if (filter.isEmpty()) {
+            // Se o filtro estiver vazio, exiba a lista completa
+            listView.setItems(itemNames);
+        } else {
+            // Use a função de filtragem para exibir apenas os itens correspondentes
+            filteredItemNames.clear();
+            filteredItemNames.addAll(itemNames.filtered(item -> item.contains(filter)));
+            listView.setItems(filteredItemNames);
         }
     }
 

@@ -38,19 +38,25 @@ public class CadastroProdutoController {
     private ColorAdjust grayscaleEffect = new ColorAdjust();
     private Popup popup;
     private Popup popupMarca;
+    private Popup currentPopup;
 
     private ImageSelectionUtil imageSelectionUtil;
     private PopupUtil marcaPopupUtil;
     private PopupUtil categoriaPopupUtil;
+    @FXML
+    private TextField marcaSearchField;
+    @FXML
+    private TextField categoriaSearchField;
 
     // Método de inicialização
     public void initialize() {
-        // Inicializa utilitários de seleção de imagem, marca e categoria
+        // Inicialize utilitários de seleção de imagem
         imageSelectionUtil = new ImageSelectionUtil(imageView, messageLabel, messageLabelOne, anchorPane);
         imageSelectionUtil.initialize();
-        marcaPopupUtil = new MarcaPopupUtil(marcaTextField);
-        categoriaPopupUtil = new CategoriaPopupUtil(categoriaTextField);
+        marcaPopupUtil = new MarcaPopupUtil(marcaTextField, marcaSearchField);
+        categoriaPopupUtil = new CategoriaPopupUtil(categoriaTextField, categoriaSearchField);
     }
+
 
     @FXML
     public void selectImage(MouseEvent event) {
