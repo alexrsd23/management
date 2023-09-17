@@ -1,4 +1,5 @@
 package com.rosendo.company.Utils;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
@@ -10,17 +11,21 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public abstract class PopupUtil {
 
     protected TextField textField;
     protected Popup popup;
     protected String fxmlFileName;
+
+    protected String cssFileName;
     protected TextField searchField; // Campo de pesquisa
     protected ListView<String> listView; // ListView
     protected ObservableList<String> itemNames; // Lista de itens
@@ -29,10 +34,11 @@ public abstract class PopupUtil {
 
 
     // Construtor
-    public PopupUtil(TextField textField, String fxmlFileName, TextField searchField) {
+    public PopupUtil(TextField textField, String fxmlFileName, TextField searchField, String cssFileName) {
         this.textField = textField;
         this.popup = new Popup();
         this.fxmlFileName = fxmlFileName;
+        this.cssFileName = cssFileName;
         this.searchField = searchField;
         this.filteredItemNames = FXCollections.observableArrayList();
     }
@@ -165,9 +171,11 @@ public abstract class PopupUtil {
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Cadastro/" + fxmlFileName));
             Parent root = loader.load();
+            root.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Css/"+ cssFileName)).toExternalForm());
 
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.initStyle(StageStyle.UTILITY);
             stage.initOwner(textField.getScene().getWindow());
             stage.show();
         } catch (IOException e) {

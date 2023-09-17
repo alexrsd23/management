@@ -5,7 +5,7 @@ import javafx.scene.control.TextField;
 public class CategoriaPopupUtil extends PopupUtil {
 
     public CategoriaPopupUtil(TextField textField, TextField searchField) {
-        super(textField, "cadastro-categoria.fxml", searchField);
+        super(textField, "cadastro-categoria.fxml", searchField, "style-cadastro-adicionais.css");
     }
 
     @Override

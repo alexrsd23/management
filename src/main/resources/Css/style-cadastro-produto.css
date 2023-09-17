@@ -1,9 +1,18 @@
-/* Estilos para a tela inicial */
-#telaInicial {
-    -fx-background-color: #E5E5E5;
+@font-face {
+    font-family: 'Poppins Semibold';
+    src: url("../fonts/Poppins.ttf");
 }
 
-/* Estilos para o fundo do formulário */
+@font-face {
+    font-family: 'Poppins Light';
+    src: url("../fonts/PoppinsLight.ttf");
+}
+
+#telaInicial {
+    -fx-background-color: #E5E5E5;
+    -fx-font-family: 'Poppins Light';
+}
+
 #backgroundFormulario {
     -fx-background-color: #fff;
     -fx-background-radius: 8;
@@ -11,84 +20,74 @@
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.08), 4, 0, 1, 2);
 }
 
-/* Estilos para TextField */
-TextField{
+TextField {
     -fx-border-radius: 6px;
     -fx-border-width: 1px;
     -fx-border-color: rgba(0, 0, 0, 0.08);
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.12), 0.9, 0, 0px, 0.3px), dropshadow(gaussian, rgba(0, 0, 0, 0.16), 3.6, 0, 0px, 1.6px);
 }
 
-/* Estilos para TextField quando focado */
 TextField:focused {
     -fx-border-color: #CACACA;
     -fx-background-color: #FFF;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.08), 4, 0, 1, 2);
 }
 
-/* Estilos para o título "Categoria" */
 #tituloCategoria {
-    -fx-font-size: 16px;
-    -fx-fill: #000;
+    -fx-font-size: 14px;
+    -fx-font-weight: 800;
 }
 
-/* Estilos para a área de texto "TextAreaInicio" */
 #TextAreaInicio {
     -fx-pref-width: 180px;
     -fx-pref-height: 125px;
-    -fx-font-size: 10px;
+    -fx-font-size: 12px;
     -fx-text-wrap: true;
 }
 
-/* Estilos para o campo "campoNome" */
 #campoNome {
     -fx-pref-width: 700px;
     -fx-pref-height: 35px;
 }
 
-/* Estilos para o campo "campoDropdown" */
 #campoDropdown {
-
     -fx-pref-width: 165px;
     -fx-pref-height: 35px;
 }
 
-/* Estilos para o botão "botaoDropdown" */
 #botaoDropdown {
     -fx-background-radius: 0;
     -fx-pref-width: 35px;
     -fx-pref-height: 35px;
 }
 
-/* Estilos para o campo "campoFornecedor" */
 #campoFornecedor {
     -fx-pref-width: 450px;
     -fx-pref-height: 35px;
 }
 
-/* Estilos para o campo "campogeral" */
 #campogeral {
     -fx-pref-width: 200px;
     -fx-pref-height: 35px;
 }
 
-/* Estilos para o botão "abrirFxmlButton" */
 #abrirFxmlButton, #abrirFxmlButtonMarca, #abrirFxmlButtonUnidade {
-    -fx-background-color: #0066ff; /* Cor de fundo azul */
-    -fx-text-fill: #ffffff; /* Cor do texto branco */
+    -fx-background-color: #0066ff;
+    -fx-text-fill: #ffffff;
     -fx-pref-width: 248px;
     -fx-pref-height: 30px;
     -fx-background-radius: 0;
     -fx-border-radius: 0;
-    -fx-font-weight:800 ;
+    -fx-font-weight: 800;
 }
 
-/* Estilos para o botão "abrirFxmlButton" quando hover */
 #abrirFxmlButton:hover, #abrirFxmlButtonMarca:hover, #abrirFxmlButtonUnidade:hover {
-   -fx-background-color:#436CFF; /* Cor de fundo azul mais escura quando hover */
+    -fx-background-color: #436CFF;
+    -fx-font-family: 'Poppins Semibold';
+    -fx-fill: #000;
 }
 
-#buscaLista{
+#buscaLista {
     -fx-pref-width: 248px;
     -fx-pref-height: 15px;
     -fx-background-radius: 0;
@@ -96,10 +95,10 @@ TextField:focused {
 }
 
 .list-cell:hover {
-   -fx-background-color:#03A9F4; /* Altere para a cor desejada */
+    -fx-background-color: #03A9F4;
 }
 
-#botaoDropdown, #botaoDropdownMarca, #botaoDropdownUnidade{
+#botaoDropdown, #botaoDropdownMarca, #botaoDropdownUnidade {
     -fx-background-radius: 0;
     -fx-pref-width: 35px;
     -fx-pref-height: 35px;
@@ -112,4 +111,38 @@ TextField:focused {
     -fx-border-color: #CACACA;
     -fx-background-color: #FFF;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.08), 4, 0, 1, 2);
+}
+
+#painelImagem {
+    -fx-background-color: #E9E9E9;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -fx-border-color: #CACACA;
+}
+
+#painelImagem:hover {
+    -fx-cursor: hand;
+}
+
+#imagemSelector {
+    -fx-opacity: 0.2;
+}
+
+#buttonCancelar, #buttonAction {
+    -fx-min-width: 180px;
+    -fx-pref-width: 180px;
+    -fx-padding: 8px;
+    -fx-alignment: center;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-border-width: 1px;
+    -fx-border-color: rgba(0, 0, 0, 0.08);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.12), 0.9, 0, 0px, 0.3px), dropshadow(gaussian, rgba(0, 0, 0, 0.16), 3.6, 0, 0px, 1.6px);
+    -fx-background-color: #FFF;
+    -fx-font-weight: 900;
+}
+
+#buttonAction {
+    -fx-background-radius: 8px;
+    -fx-background-color: #4C4C4C;
 }
