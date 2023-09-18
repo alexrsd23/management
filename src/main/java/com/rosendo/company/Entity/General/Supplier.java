@@ -1,9 +1,6 @@
 package com.rosendo.company.Entity.General;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Supplier {
@@ -18,6 +15,17 @@ public class Supplier {
     private String email;
     private String comments;
     private String representative;
+    @OneToOne
+    @JoinColumn(name = "adress_id")
+    private Adress adress;
+
+    public Adress getAdress() {
+        return adress;
+    }
+
+    public void setAdress(Adress adress) {
+        this.adress = adress;
+    }
 
     public Long getId() {
         return id;
@@ -94,7 +102,7 @@ public class Supplier {
     public Supplier() {
     }
 
-    public Supplier(Long id, String name, String phoneOne, String phoneTwo, String CNPJ, String stateRegistration, String email, String comments, String representative) {
+    public Supplier(Long id, String name, String phoneOne, String phoneTwo, String CNPJ, String stateRegistration, String email, String comments, String representative, Adress adress) {
         this.id = id;
         this.name = name;
         this.phoneOne = phoneOne;
@@ -104,5 +112,6 @@ public class Supplier {
         this.email = email;
         this.comments = comments;
         this.representative = representative;
+        this.adress = adress;
     }
 }

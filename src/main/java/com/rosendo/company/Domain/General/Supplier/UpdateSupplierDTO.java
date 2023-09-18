@@ -1,7 +1,8 @@
 package com.rosendo.company.Domain.General.Supplier;
 
-public class UpdateSupplierDTO {
+import com.rosendo.company.Entity.General.Adress;
 
+public class UpdateSupplierDTO {
     private String name;
     private String phoneOne;
     private String phoneTwo;
@@ -10,6 +11,7 @@ public class UpdateSupplierDTO {
     private String email;
     private String comments;
     private String representative;
+    private Adress adress;
 
     public String getName() {
         return name;
@@ -73,5 +75,13 @@ public class UpdateSupplierDTO {
 
     public void setRepresentative(String representative) {
         this.representative = representative;
+    }
+
+    public Adress getAdress() {
+        return adress;
+    }
+
+    public void setAdress(Adress adress) {
+        this.adress = adress;
     }
 }

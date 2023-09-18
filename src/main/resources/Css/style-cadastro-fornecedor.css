@@ -1,0 +1,52 @@
+@font-face {
+    font-family: 'Poppins Semibold';
+    src: url("../fonts/Poppins.ttf");
+}
+
+@font-face {
+    font-family: 'Poppins Light';
+    src: url("../fonts/PoppinsLight.ttf");
+}
+
+#telaInicial {
+    -fx-font-family: 'Poppins Light';
+}
+
+TextField, TextArea {
+    -fx-border-width: 1px;
+    -fx-border-color: rgba(0, 0, 0, 0.08);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.12), 0.9, 0, 0px, 0.3px), dropshadow(gaussian, rgba(0, 0, 0, 0.16), 3.6, 0, 0px, 1.6px);
+}
+
+TextField:focused, TextArea:focused {
+    -fx-border-color: #CACACA;
+    -fx-background-color: #FFF;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.08), 4, 0, 1, 2);
+}
+
+#tituloCategoria {
+    -fx-font-size: 14px;
+    -fx-font-weight: 200;
+}
+
+#buttonCancelar, #buttonAction {
+    -fx-min-width: 180px;
+    -fx-pref-width: 180px;
+    -fx-padding: 8px;
+    -fx-alignment: center;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.12), 0.9, 0, 0px, 0.3px), dropshadow(gaussian, rgba(0, 0, 0, 0.16), 3.6, 0, 0px, 1.6px);
+    -fx-background-color: #FFF;
+    -fx-font-weight: 900;
+}
+
+#buttonCancelar{
+
+    -fx-border-width: 1px;
+    -fx-background-color: #F87B7B;}
+
+#buttonAction {
+    -fx-background-radius: 8px;
+    -fx-background-color: #4C4C4C;
+}

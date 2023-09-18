@@ -1,5 +1,7 @@
 package com.rosendo.company.Domain.General.Supplier;
 
+import com.rosendo.company.Entity.General.Adress;
+
 public class ConsultSupplierDTO {
     private Long id;
     private String name;
@@ -10,6 +12,7 @@ public class ConsultSupplierDTO {
     private String email;
     private String comments;
     private String representative;
+    private Adress adress;
 
     public Long getId() {
         return id;
@@ -81,5 +84,29 @@ public class ConsultSupplierDTO {
 
     public void setRepresentative(String representative) {
         this.representative = representative;
+    }
+
+    public Adress getAdress() {
+        return adress;
+    }
+
+    public void setAdress(Adress adress) {
+        this.adress = adress;
+    }
+
+    public ConsultSupplierDTO() {
+    }
+
+    public ConsultSupplierDTO(Long id, String name, String phoneOne, String phoneTwo, String CNPJ, String stateRegistration, String email, String comments, String representative, Adress adress) {
+        this.id = id;
+        this.name = name;
+        this.phoneOne = phoneOne;
+        this.phoneTwo = phoneTwo;
+        this.CNPJ = CNPJ;
+        this.stateRegistration = stateRegistration;
+        this.email = email;
+        this.comments = comments;
+        this.representative = representative;
+        this.adress = adress;
     }
 }

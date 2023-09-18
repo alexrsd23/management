@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+<AnchorPane id="telaInicial" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.rosendo.company.Controllers.FXMLControllers.Fornecedor.CadastroFornecedorController">
+   <children>
+      <Text id="tituloCategoria" layoutX="25.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome do Fornecedor" />
+      <TextField layoutX="25.0" layoutY="60.0" prefHeight="35.0" prefWidth="700.0" />
+      <Text id="tituloCategoria" layoutX="25.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telefone" />
+      <TextField id="campogeral" layoutX="25.0" layoutY="150.0" prefHeight="35.0" prefWidth="200.0" />
+      <Text id="tituloCategoria" layoutX="275.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Celular" />
+      <TextField id="campogeral" layoutX="275.0" layoutY="150.0" prefHeight="35.0" prefWidth="200.0" />
+      <Text id="tituloCategoria" layoutX="525.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CNPJ" />
+      <TextField id="campogeral" layoutX="525.0" layoutY="150.0" prefHeight="35.0" prefWidth="200.0" />
+      <Text id="tituloCategoria" layoutX="25.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E-mail" />
+      <TextField id="campogeral" layoutX="25.0" layoutY="240.0" prefHeight="35.0" prefWidth="200.0" />
+      <Text id="tituloCategoria" layoutX="275.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Representante" />
+      <TextField id="camporepresentante" layoutX="275.0" layoutY="240.0" prefHeight="35.0" prefWidth="450.0" />
+      <Text id="tituloCategoria" layoutX="25.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inscrição Estadual" />
+      <TextField id="campogeral" layoutX="25.0" layoutY="330.0" prefHeight="35.0" prefWidth="200.0" />
+      <Text id="tituloCategoria" layoutX="275.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Endereço" />
+      <TextField id="campoendereco" layoutX="275.0" layoutY="330.0" prefHeight="35.0" prefWidth="450.0" />
+      <Text id="tituloCategoria" layoutX="25.0" layoutY="410.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Observações" />
+      <TextArea id="campoobservacoes" layoutX="25.0" layoutY="420.0" prefHeight="100.0" prefWidth="700.0" />
+      <Button id="buttonCancelar" layoutX="175.0" layoutY="550.0" mnemonicParsing="false" text="Cancelar" onAction="#cancelarAcao" />
+      <Button id="buttonAction" layoutX="395.0" layoutY="550.0" mnemonicParsing="false" text="Registrar" textFill="#FFFFFF" />
+   </children>
+</AnchorPane>

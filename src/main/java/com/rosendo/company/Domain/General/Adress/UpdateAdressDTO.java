@@ -1,13 +1,17 @@
 package com.rosendo.company.Domain.General.Adress;
 
 public class UpdateAdressDTO {
+    private String street; //RUA
+    private String neighborhood;//BAIRRO
+    private Integer number;//NUMERO
+    private String postalCode;//CEP
+    private String complement;//COMPLEMENTO
+    private String state;//ESTADO
+    private String country;//PAIS
 
-    private String street;
-    private String neighborhood;
-    private Integer number;
-    private String postalCode;
-    private String state;
-    private String country;
+    private String city;
+
+    private String observation;
 
     public String getStreet() {
         return street;
@@ -41,6 +45,14 @@ public class UpdateAdressDTO {
         this.postalCode = postalCode;
     }
 
+    public String getComplement() {
+        return complement;
+    }
+
+    public void setComplement(String complement) {
+        this.complement = complement;
+    }
+
     public String getState() {
         return state;
     }
@@ -57,15 +69,19 @@ public class UpdateAdressDTO {
         this.country = country;
     }
 
-    public UpdateAdressDTO(String street, String neighborhood, Integer number, String postalCode, String state, String country) {
-        this.street = street;
-        this.neighborhood = neighborhood;
-        this.number = number;
-        this.postalCode = postalCode;
-        this.state = state;
-        this.country = country;
+    public String getCity() {
+        return city;
     }
 
-    public UpdateAdressDTO() {
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getObservation() {
+        return observation;
+    }
+
+    public void setObservation(String observation) {
+        this.observation = observation;
     }
 }
