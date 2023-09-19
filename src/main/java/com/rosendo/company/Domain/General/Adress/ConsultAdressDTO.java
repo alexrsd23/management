@@ -96,6 +96,15 @@ public class ConsultAdressDTO {
     public ConsultAdressDTO() {
     }
 
+    public ConsultAdressDTO(Long id, String street, String neighborhood, Integer number,String state, String city) {
+        this.id = id;
+        this.street = street;
+        this.neighborhood = neighborhood;
+        this.number = number;
+        this.city = city;
+        this.state = state;
+    }
+
     public ConsultAdressDTO(Long id, String street, String neighborhood, Integer number, String postalCode, String complement, String state, String country, String city, String observation) {
         this.id = id;
         this.street = street;
@@ -107,5 +116,21 @@ public class ConsultAdressDTO {
         this.country = country;
         this.city = city;
         this.observation = observation;
+    }
+
+    @Override
+    public String toString() {
+        return "ConsultAdressDTO{" +
+                "id=" + id +
+                ", street='" + street + '\'' +
+                ", neighborhood='" + neighborhood + '\'' +
+                ", number=" + number +
+                ", postalCode='" + postalCode + '\'' +
+                ", complement='" + complement + '\'' +
+                ", state='" + state + '\'' +
+                ", country='" + country + '\'' +
+                ", city='" + city + '\'' +
+                ", observation='" + observation + '\'' +
+                '}';
     }
 }

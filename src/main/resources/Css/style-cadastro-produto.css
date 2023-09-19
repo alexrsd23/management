@@ -25,6 +25,8 @@ TextField {
     -fx-border-width: 1px;
     -fx-border-color: rgba(0, 0, 0, 0.08);
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.12), 0.9, 0, 0px, 0.3px), dropshadow(gaussian, rgba(0, 0, 0, 0.16), 3.6, 0, 0px, 1.6px);
+    -fx-text-fill: #194E92;
+    -fx-font-weight: 200;
 }
 
 TextField:focused {

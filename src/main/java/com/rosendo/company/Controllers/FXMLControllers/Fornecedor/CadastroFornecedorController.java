@@ -1,5 +1,6 @@
 package com.rosendo.company.Controllers.FXMLControllers.Fornecedor;
 
+import com.rosendo.company.Controllers.FXMLControllers.Endereco.CadastroEnderecoController;
 import com.rosendo.company.Utils.ApiRequestUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -47,6 +48,7 @@ public class CadastroFornecedorController {
     @FXML
     private TextArea observacoes;
 
+    // Este campo não é usado, pode ser removido
     protected TextField textField;
 
     public void initialize(Stage primaryStage) throws Exception {
@@ -60,24 +62,16 @@ public class CadastroFornecedorController {
     }
 
     @FXML
-    void registrarFornecedor(ActionEvent event) throws JSONException{
+    void registrarFornecedor(ActionEvent event) throws JSONException {
         String endpoint = "/supplier";
         String name = fornecedor.getText();
-
         String phoneOne = telefone.getText();
-
         String phoneTwo = celular.getText();
-
         String CNPJ = cnpj.getText();
-
         String email = emailFornecedor.getText();
-
         String representative = representante.getText();
-
         String stateRegistration = inscricao.getText();
-
         String adress = endereco.getText();
-
         String comments = observacoes.getText();
 
         JSONObject requestData = new JSONObject()
@@ -131,7 +125,17 @@ public class CadastroFornecedorController {
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.initStyle(StageStyle.UTILITY);
-            stage.show();
+            CadastroEnderecoController enderecoController = loader.getController();
+            stage.showAndWait();
+            int enderecoId = enderecoController.getEnderecoId();
+            if (enderecoId != -1) {
+                String rua = enderecoController.obterPropriedadePeloId(enderecoId, "rua");
+                String numero = enderecoController.obterPropriedadePeloId(enderecoId, "numero");
+                String bairro = enderecoController.obterPropriedadePeloId(enderecoId, "bairro");
+                String cidade = enderecoController.obterPropriedadePeloId(enderecoId, "cidade");
+                String enderecoCompleto = rua+", Nº "+numero+", "+bairro+" - "+cidade;
+                endereco.setText(enderecoCompleto);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
