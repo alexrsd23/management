@@ -1,5 +1,6 @@
 package com.rosendo.company.Utils;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.*;
@@ -10,7 +11,7 @@ public class ApiRequestUtil {
 
     private static final String API_BASE_URL = "http://localhost:8080"; // Altere para o URL base da sua API
 
-    public static boolean sendPostRequest(String endpoint, JSONObject requestData) {
+    public static JSONObject sendPostRequest(String endpoint, JSONObject requestData) {
         try {
             URL url = new URL(API_BASE_URL + endpoint);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -26,16 +27,25 @@ public class ApiRequestUtil {
 
             int responseCode = connection.getResponseCode();
             if (responseCode == HttpURLConnection.HTTP_OK) {
-                // A solicitação foi bem-sucedida
-                return true;
+                // A solicitação foi bem-sucedida, leia a resposta JSON
+                try (BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
+                    StringBuilder response = new StringBuilder();
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        response.append(line);
+                    }
+                    return new JSONObject(response.toString());
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
             } else {
                 // Trate erros de acordo com o código de resposta
-                return false;
+                return null;
             }
         } catch (IOException e) {
             e.printStackTrace();
             // Trate exceções de conexão aqui
-            return false;
+            return null;
         }
     }
 
@@ -67,5 +77,4 @@ public class ApiRequestUtil {
             return null; // Ou lance uma exceção adequada
         }
     }
-
 }

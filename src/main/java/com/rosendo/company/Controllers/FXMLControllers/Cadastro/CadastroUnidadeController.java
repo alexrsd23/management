@@ -27,13 +27,14 @@ public class CadastroUnidadeController {
         JSONObject requestData = new JSONObject()
                 .put("name", nomeUnidade);
 
-        boolean registroBemSucedido = ApiRequestUtil.sendPostRequest(endpoint, requestData);
+        JSONObject response = ApiRequestUtil.sendPostRequest(endpoint, requestData);
 
-        if (registroBemSucedido) {
-            mostrarAlerta("Registro realizado com sucesso");
+        if (response != null && response.has("id")) {
+            int enderecoId = response.getInt("id");
+            mostrarAlerta("Endereço registrado com sucesso. ID do endereço: " + enderecoId);
             fecharJanela(event);
         } else {
-            mostrarAlerta("Erro ao registrar unidade");
+            mostrarAlerta("Erro ao registrar endereço");
         }
     }
 
