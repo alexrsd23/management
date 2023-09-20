@@ -48,6 +48,16 @@ public class CadastroFornecedorController {
     @FXML
     private TextArea observacoes;
 
+    int idEndereco;
+
+    public int getIdEndereco() {
+        return idEndereco;
+    }
+
+    public void setIdEndereco(int idEndereco) {
+        this.idEndereco = idEndereco;
+    }
+
     // Este campo não é usado, pode ser removido
     protected TextField textField;
 
@@ -64,6 +74,9 @@ public class CadastroFornecedorController {
     @FXML
     void registrarFornecedor(ActionEvent event) throws JSONException {
         String endpoint = "/supplier";
+        String endpointBuscado = "/adress";
+        JSONObject endereco = ApiRequestUtil.sendGetRequestForSingleObject(endpointBuscado, getIdEndereco());
+        System.out.println(endereco);
         String name = fornecedor.getText();
         String phoneOne = telefone.getText();
         String phoneTwo = celular.getText();
@@ -71,7 +84,7 @@ public class CadastroFornecedorController {
         String email = emailFornecedor.getText();
         String representative = representante.getText();
         String stateRegistration = inscricao.getText();
-        String adress = endereco.getText();
+        JSONObject adress = endereco;
         String comments = observacoes.getText();
 
         JSONObject requestData = new JSONObject()
@@ -88,11 +101,10 @@ public class CadastroFornecedorController {
         JSONObject response = ApiRequestUtil.sendPostRequest(endpoint, requestData);
 
         if (response != null && response.has("id")) {
-            int enderecoId = response.getInt("id");
-            mostrarAlerta("Endereço registrado com sucesso. ID do endereço: " + enderecoId);
+            mostrarAlerta("Fornecedor registrado com sucesso. ");
             fecharJanela(event);
         } else {
-            mostrarAlerta("Erro ao registrar endereço");
+            mostrarAlerta("Erro ao registrar fornecedor");
         }
     }
 
@@ -128,6 +140,7 @@ public class CadastroFornecedorController {
             CadastroEnderecoController enderecoController = loader.getController();
             stage.showAndWait();
             int enderecoId = enderecoController.getEnderecoId();
+            setIdEndereco(enderecoId);
             if (enderecoId != -1) {
                 String rua = enderecoController.obterPropriedadePeloId(enderecoId, "rua");
                 String numero = enderecoController.obterPropriedadePeloId(enderecoId, "numero");

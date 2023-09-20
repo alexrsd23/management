@@ -9,7 +9,7 @@ import java.net.URL;
 
 public class ApiRequestUtil {
 
-    private static final String API_BASE_URL = "http://localhost:8080"; // Altere para o URL base da sua API
+    private static final String API_BASE_URL = "http://localhost:8080";
 
     public static JSONObject sendPostRequest(String endpoint, JSONObject requestData) {
         try {
@@ -27,7 +27,6 @@ public class ApiRequestUtil {
 
             int responseCode = connection.getResponseCode();
             if (responseCode == HttpURLConnection.HTTP_OK) {
-                // A solicitação foi bem-sucedida, leia a resposta JSON
                 try (BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
                     StringBuilder response = new StringBuilder();
                     String line;
@@ -39,12 +38,10 @@ public class ApiRequestUtil {
                     throw new RuntimeException(e);
                 }
             } else {
-                // Trate erros de acordo com o código de resposta
                 return null;
             }
         } catch (IOException e) {
             e.printStackTrace();
-            // Trate exceções de conexão aqui
             return null;
         }
     }
@@ -58,7 +55,6 @@ public class ApiRequestUtil {
 
             int responseCode = connection.getResponseCode();
             if (responseCode == HttpURLConnection.HTTP_OK) {
-                // A solicitação foi bem-sucedida, leia a resposta
                 try (BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
                     StringBuilder response = new StringBuilder();
                     String line;
@@ -68,13 +64,39 @@ public class ApiRequestUtil {
                     return response.toString();
                 }
             } else {
-                // Trate erros de acordo com o código de resposta
-                return null; // Ou lance uma exceção adequada
+                return null;
             }
         } catch (IOException e) {
             e.printStackTrace();
-            // Trate exceções de conexão aqui
-            return null; // Ou lance uma exceção adequada
+            return null;
+        }
+    }
+
+    public static JSONObject sendGetRequestForSingleObject(String endpointBuscado, int id) {
+        try {
+            URL apiUrl = new URL(API_BASE_URL + endpointBuscado + "/" + id);
+            HttpURLConnection connection = (HttpURLConnection) apiUrl.openConnection();
+
+            connection.setRequestMethod("GET");
+
+            int responseCode = connection.getResponseCode();
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                try (BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
+                    StringBuilder response = new StringBuilder();
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        response.append(line);
+                    }
+                    return new JSONObject(response.toString());
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
+            } else {
+                return null;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
         }
     }
 }
