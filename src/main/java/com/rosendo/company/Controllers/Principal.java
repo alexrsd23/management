@@ -20,6 +20,6 @@ public class Principal extends Application {
 //        primaryStage.setScene(scene);
 //        primaryStage.show();
         CadastroFornecedorController cadastroFornecedorController = new CadastroFornecedorController();
-        cadastroFornecedorController.initialize(primaryStage);
+        cadastroFornecedorController.initialize(primaryStage );
     }
 }

@@ -9,6 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -47,6 +48,9 @@ public class CadastroFornecedorController {
 
     @FXML
     private TextArea observacoes;
+
+    @FXML
+    private Button buttonAtualizarEndereco;
 
     int idEndereco;
 
@@ -148,9 +152,49 @@ public class CadastroFornecedorController {
                 String cidade = enderecoController.obterPropriedadePeloId(enderecoId, "cidade");
                 String enderecoCompleto = rua+", Nº "+numero+", "+bairro+" - "+cidade;
                 endereco.setText(enderecoCompleto);
+                atualizarLayout();
+
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    void atualizarEndereco(ActionEvent event) throws IOException, JSONException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Endereco/cadastro-endereco.fxml"));
+        Parent root = loader.load();
+        root.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Css/style-cadastro-endereco.css")).toExternalForm());
+        CadastroEnderecoController enderecoController = loader.getController();
+        enderecoController.atualizarEnderecoporId(event, idEndereco);
+        System.out.println("entrei aqui");
+        System.out.println(idEndereco);
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.initStyle(StageStyle.UTILITY);
+        stage.showAndWait();
+        int enderecoId = enderecoController.getEnderecoId();
+        setIdEndereco(enderecoId);
+        if (enderecoId != -1) {
+            String rua = enderecoController.obterPropriedadePeloId(enderecoId, "rua");
+            String numero = enderecoController.obterPropriedadePeloId(enderecoId, "numero");
+            String bairro = enderecoController.obterPropriedadePeloId(enderecoId, "bairro");
+            String cidade = enderecoController.obterPropriedadePeloId(enderecoId, "cidade");
+            String enderecoCompleto = rua+", Nº "+numero+", "+bairro+" - "+cidade;
+            endereco.setText(enderecoCompleto);
+            atualizarLayout();
+
+        }
+    }
+
+
+    @FXML
+    void atualizarLayout(){
+        buttonAtualizarEndereco.setVisible(true);
+        buttonAtualizarEndereco.setLayoutX(625);
+        buttonAtualizarEndereco.setLayoutY(330);
+        buttonAtualizarEndereco.setPrefWidth(100);
+        buttonAtualizarEndereco.setPrefHeight(34);
+        endereco.setPrefWidth(350);
     }
 }

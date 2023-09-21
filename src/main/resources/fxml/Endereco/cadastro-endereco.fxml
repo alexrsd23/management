@@ -14,9 +14,9 @@
       <Text id="tituloCategoria" layoutX="275.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Estado" />
       <TextField id="campogeral" layoutX="275.0" layoutY="150.0" prefHeight="35.0" prefWidth="200.0" fx:id="estado"/>
       <Text id="tituloCategoria" layoutX="525.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="País" />
-      <TextField id="campogeral" layoutX="525.0" layoutY="150.0" prefHeight="35.0" prefWidth="200.0" fx:id="país"/>
+      <TextField id="campogeral" layoutX="525.0" layoutY="150.0" prefHeight="35.0" prefWidth="200.0" fx:id="pais"/>
       <Text id="tituloCategoria" layoutX="775.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Número" />
-      <TextField id="campogeral" layoutX="775.0" layoutY="150.0" prefHeight="35.0" prefWidth="200.0" fx:id="número"/>
+      <TextField id="campogeral" layoutX="775.0" layoutY="150.0" prefHeight="35.0" prefWidth="200.0" fx:id="numero"/>
       <Text id="tituloCategoria" layoutX="25.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bairro" />
       <TextField id="campogeral" layoutX="25.0" layoutY="240.0" prefHeight="35.0" prefWidth="200.0" fx:id="bairro"/>
       <Text id="tituloCategoria" layoutX="275.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cidade" />
@@ -24,8 +24,9 @@
       <Text id="tituloCategoria" layoutX="525.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Complemento" />
       <TextField id="camporepresentante" layoutX="525.0" layoutY="240.0" prefHeight="35.0" prefWidth="450.0" fx:id="complemento"/>
       <Text id="tituloCategoria" layoutX="25.0" layoutY="310.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Observações" />
-      <TextArea id="campoobservacoes" layoutX="25.0" layoutY="320.0" prefHeight="100.0" prefWidth="950.0" fx:id="observação"/>
+      <TextArea id="campoobservacoes" layoutX="25.0" layoutY="320.0" prefHeight="100.0" prefWidth="950.0" fx:id="observacao"/>
       <Button id="buttonCancelar" layoutX="300.0" layoutY="450.0" mnemonicParsing="false" text="Cancelar" onAction="#cancelarAcao" />
-      <Button id="buttonAction" layoutX="520.0" layoutY="450.0" mnemonicParsing="false" text="Registrar" textFill="#FFFFFF" onAction="#registrarEndereco"/>
+      <Button id="buttonAction" fx:id="buttonAction" layoutX="520.0" layoutY="450.0" text="Cadastrar" textFill="#FFFFFF" onAction="#registrarEndereco"/>
+      <Button id="buttonAction" fx:id="buttonActionUpdate" layoutX="520.0" layoutY="450.0" visible="false" text="Atualizar" textFill="#FFFFFF" onAction="#atualizarEndereco"/>
    </children>
 </AnchorPane>

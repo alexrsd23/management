@@ -52,3 +52,7 @@ TextField:focused, TextArea:focused {
     -fx-background-radius: 8px;
     -fx-background-color: #4C4C4C;
 }
+
+#buttonActionAtualizar {
+    -fx-background-color: #4C4C4C;
+}

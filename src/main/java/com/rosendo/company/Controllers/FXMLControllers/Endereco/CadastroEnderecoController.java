@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -26,9 +27,9 @@ public class CadastroEnderecoController {
     @FXML
     private TextField estado;
     @FXML
-    private TextField país;
+    private TextField pais;
     @FXML
-    private TextField número;
+    private TextField numero;
     @FXML
     private TextField bairro;
     @FXML
@@ -36,9 +37,17 @@ public class CadastroEnderecoController {
     @FXML
     private TextField complemento;
     @FXML
-    private TextArea observação;
+    private TextArea observacao;
+
+    @FXML
+    private Button buttonAction;
+
+    @FXML
+    private Button buttonActionUpdate;
 
     private int enderecoId;
+
+
 
     private CadastroFornecedorController parentController;
 
@@ -54,18 +63,19 @@ public class CadastroEnderecoController {
         this.enderecoId = enderecoId;
     }
 
+
     @FXML
     void registrarEndereco(ActionEvent event) throws JSONException {
         String endpoint = "/adress";
         String street = rua.getText();
         String postalCode = codigoPostal.getText();
         String state = estado.getText();
-        String country = país.getText();
-        String number = número.getText();
+        String country = pais.getText();
+        String number = numero.getText();
         String neighborhood = bairro.getText();
         String city = cidade.getText();
         String complement = complemento.getText();
-        String observation = observação.getText();
+        String observation = observacao.getText();
 
         JSONObject requestData = new JSONObject()
                 .put("street", street)
@@ -87,6 +97,69 @@ public class CadastroEnderecoController {
         } else {
             mostrarAlerta("Erro ao registrar endereço");
         }
+    }
+
+    @FXML
+    void atualizarBotao(boolean condicao){
+        buttonAction.setVisible(!condicao);
+        buttonActionUpdate.setVisible(condicao);
+    }
+
+    @FXML
+    void atualizarEndereco(ActionEvent event) throws JSONException {
+
+        String endpointBuscado = "/adress";
+        JSONObject endereco = ApiRequestUtil.sendGetRequestForSingleObject(endpointBuscado, enderecoId);
+        String street = rua.getText();
+        String postalCode = codigoPostal.getText();
+        String state = estado.getText();
+        String country = pais.getText();
+        String number = numero.getText();
+        String neighborhood = bairro.getText();
+        String city = cidade.getText();
+        String complement = complemento.getText();
+        String observation = observacao.getText();
+
+        JSONObject requestData = new JSONObject()
+                .put("street", street)
+                .put("postalCode", postalCode)
+                .put("state", state)
+                .put("country", country)
+                .put("number", number)
+                .put("neighborhood", neighborhood)
+                .put("city", city)
+                .put("complement", complement)
+                .put("observation", observation);
+
+        JSONObject response = ApiRequestUtil.sendPutRequest(endpointBuscado, enderecoId, requestData);
+
+        if (response != null) {
+            mostrarAlerta("Endereço atualizado com sucesso.");
+            fecharJanela(event);
+        } else {
+            mostrarAlerta("Erro ao atualizar endereço");
+        }
+    }
+
+    @FXML
+    public void atualizarEnderecoporId(ActionEvent event, int idEndereco) throws JSONException {
+        System.out.println("entrei aqui no metodo");
+        System.out.println(idEndereco);
+        setEnderecoId(idEndereco);
+        String endpointBuscado = "/adress";
+        JSONObject endereco = ApiRequestUtil.sendGetRequestForSingleObject(endpointBuscado, idEndereco);
+        System.out.println("recebi o objeto");
+        System.out.println(endereco);
+        rua.setText(endereco.getString("street"));
+        codigoPostal.setText(endereco.getString("postalCode"));
+        estado.setText(endereco.getString("state"));
+        pais.setText(endereco.getString("country"));
+        numero.setText(endereco.getString("number"));
+        bairro.setText(endereco.getString("neighborhood"));
+        cidade.setText(endereco.getString("city"));
+        complemento.setText(endereco.getString("complement"));
+        observacao.setText(endereco.getString("observation"));
+        atualizarBotao(true);
     }
 
     @FXML

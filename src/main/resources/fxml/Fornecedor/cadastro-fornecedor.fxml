@@ -23,6 +23,7 @@
       <TextField id="campogeral" layoutX="25.0" layoutY="330.0" prefHeight="35.0" prefWidth="200.0" fx:id="inscricao"/>
       <Text id="tituloCategoria" layoutX="275.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Endereço" />
       <TextField id="campoendereco" layoutX="275.0" layoutY="330.0" prefHeight="35.0" prefWidth="450.0" fx:id="endereco" onMouseClicked="#openFXML"/>
+      <Button fx:id="buttonAtualizarEndereco" id="buttonActionAtualizar" visible="false" mnemonicParsing="false" text="Atualizar" textFill="#FFFFFF" onAction="#atualizarEndereco" />
       <Text id="tituloCategoria" layoutX="25.0" layoutY="410.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Observações" />
       <TextArea id="campoobservacoes" layoutX="25.0" layoutY="420.0" prefHeight="100.0" prefWidth="700.0" fx:id="observacoes"/>
       <Button id="buttonCancelar" layoutX="175.0" layoutY="550.0" mnemonicParsing="false" text="Cancelar" onAction="#cancelarAcao" />
