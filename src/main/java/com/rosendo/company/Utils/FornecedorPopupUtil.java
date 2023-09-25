@@ -2,21 +2,21 @@ package com.rosendo.company.Utils;
 
 import javafx.scene.control.TextField;
 
-public class MarcaPopupUtil extends PopupUtil {
+public class FornecedorPopupUtil extends PopupUtil {
 
-    public MarcaPopupUtil(TextField textField, TextField searchField) {
-        super(textField, "Cadastro/cadastro-marca.fxml", searchField, "style-cadastro-adicionais.css");
+    public FornecedorPopupUtil(TextField textField, TextField searchField) {
+        super(textField, "Fornecedor/cadastro-fornecedor.fxml", searchField, "style-cadastro-fornecedor.css");
     }
 
 
     @Override
     protected String getApiEndpoint() {
-        return "/brand";
+        return "/supplier";
     }
 
     @Override
     protected String getAddButtonText() {
-        return "Adicionar nova marca";
+        return "Adicionar novo Fornecedor";
     }
 
     @Override
@@ -26,12 +26,12 @@ public class MarcaPopupUtil extends PopupUtil {
 
     @Override
     protected double getDesiredX() {
-        return 432.0;
+        return 182.0;
     }
 
     @Override
     protected double getDesiredY() {
-        return 240.0;
+        return 410.0;
     }
 
 

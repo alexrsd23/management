@@ -5,7 +5,7 @@ import javafx.scene.control.TextField;
 public class UnidadePopupUtil extends PopupUtil {
 
     public UnidadePopupUtil(TextField textField, TextField searchField) {
-        super(textField, "cadastro-unidade.fxml", searchField, "style-cadastro-adicionais.css");
+        super(textField, "Cadastro/cadastro-unidade.fxml", searchField, "style-cadastro-adicionais.css");
     }
 
 

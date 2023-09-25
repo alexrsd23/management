@@ -54,8 +54,15 @@
             <Text id="tituloCategoria"  layoutX="525.0" layoutY="230.0" text="Código de Barras" />
             <TextField id="campogeral"  layoutX="525.0" layoutY="240.0" />
 
-            <Text id="tituloCategoria"  layoutX="25.0" layoutY="310.0" text="Fornecedor" />
-            <ComboBox id="campoFornecedor"  layoutX="25.0" layoutY="320.0"/>
+            <Text id="tituloCategoria" layoutX="25.0" layoutY="310.0" text="Fornecedor" />
+            <AnchorPane layoutX="25.0" layoutY="320.0">
+               <children>
+                  <HBox>
+                     <TextField  id="campoFornecedor" fx:id="fornecedorTextField"/>
+                     <Button id="botaoDropdownUnidade" text="▼" onAction="#alternarPopupFornecedor" layoutX="310.0"/>
+                  </HBox>
+               </children>
+            </AnchorPane>
 
             <Text id="tituloCategoria"  layoutX="525.0" layoutY="310.0" text="Código de Referência" />
             <TextField id="campogeral"  layoutX="525.0" layoutY="320.0" />

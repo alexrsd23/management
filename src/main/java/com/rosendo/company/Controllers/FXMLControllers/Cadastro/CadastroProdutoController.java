@@ -32,6 +32,9 @@ public class CadastroProdutoController {
     private TextField marcaTextField;
 
     @FXML
+    private TextField fornecedorTextField;
+
+    @FXML
     private TextField unidadeTextField;
 
     // Efeitos e popups
@@ -39,12 +42,15 @@ public class CadastroProdutoController {
     private Popup popup;
     private Popup popupMarca;
     private Popup popupUnidade;
+    private Popup popupFornecedor;
     private Popup currentPopup;
 
     private ImageSelectionUtil imageSelectionUtil;
     private PopupUtil marcaPopupUtil;
     private PopupUtil categoriaPopupUtil;
     private PopupUtil unidadePopupUtil;
+
+    private PopupUtil fornecedorPopupUtil;
     @FXML
     private TextField marcaSearchField;
     @FXML
@@ -52,6 +58,9 @@ public class CadastroProdutoController {
 
     @FXML
     private TextField unidadeSearchField;
+
+    @FXML
+    private TextField fornecedorSearchField;
 
     // Método de inicialização
     public void initialize() {
@@ -61,6 +70,7 @@ public class CadastroProdutoController {
         marcaPopupUtil = new MarcaPopupUtil(marcaTextField, marcaSearchField);
         categoriaPopupUtil = new CategoriaPopupUtil(categoriaTextField, categoriaSearchField);
         unidadePopupUtil = new UnidadePopupUtil(unidadeTextField, unidadeSearchField);
+        fornecedorPopupUtil = new FornecedorPopupUtil(fornecedorTextField, fornecedorSearchField);
     }
 
 
@@ -96,6 +106,11 @@ public class CadastroProdutoController {
     @FXML
     private void alternarPopupUnidade(ActionEvent event) throws JSONException {
         unidadePopupUtil.togglePopup();
+    }
+
+    @FXML
+    private void alternarPopupFornecedor(ActionEvent event) throws JSONException {
+        fornecedorPopupUtil.togglePopup();
     }
 
     @FXML

@@ -169,7 +169,7 @@ public abstract class PopupUtil {
                 popup.hide();
             }
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Cadastro/" + fxmlFileName));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/" + fxmlFileName));
             Parent root = loader.load();
             root.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Css/"+ cssFileName)).toExternalForm());
 
