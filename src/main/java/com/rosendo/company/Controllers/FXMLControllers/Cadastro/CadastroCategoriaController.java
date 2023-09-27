@@ -36,11 +36,10 @@ public class CadastroCategoriaController {
         JSONObject response = ApiRequestUtil.sendPostRequest(endpoint, requestData);
 
         if (response != null && response.has("id")) {
-            int enderecoId = response.getInt("id");
-            mostrarAlerta("Endereço registrado com sucesso. ID do endereço: " + enderecoId);
+            mostrarAlerta("Categoria registrada com sucesso.");
             fecharJanela(event);
         } else {
-            mostrarAlerta("Erro ao registrar endereço");
+            mostrarAlerta("Erro ao registrar categoria");
         }
     }
 

@@ -1,13 +1,18 @@
 package com.rosendo.company.Controllers.FXMLControllers.Cadastro;
 
 import com.rosendo.company.Utils.*;
+import com.rosendo.company.Validations.FXMLControllers.NumericTextFieldValidator;
+import com.rosendo.company.Validations.FXMLControllers.PriceTextFieldFormatter;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Popup;
@@ -17,84 +22,94 @@ import org.json.JSONException;
 import java.io.File;
 
 public class CadastroProdutoController {
-    // Declaração de elementos de interface de usuário
     @FXML
     private ImageView imageView;
     @FXML
-    private Label messageLabel;
-    @FXML
-    private Label messageLabelOne;
+    private Label messageLabel, messageLabelOne;
     @FXML
     private AnchorPane anchorPane;
     @FXML
-    private TextField categoriaTextField;
-    @FXML
-    private TextField marcaTextField;
+    private TextField categoriaTextField, marcaTextField, fornecedorTextField, unidadeTextField, marcaSearchField, categoriaSearchField, unidadeSearchField, fornecedorSearchField, campoPesoLiquido, campoPesoBruto, campoCodigoBarras, campoCodigoReferencia, campoPrecoCusto, campoPrecoVenda, campoMargemLucro;
 
-    @FXML
-    private TextField fornecedorTextField;
-
-    @FXML
-    private TextField unidadeTextField;
-
-    // Efeitos e popups
     private ColorAdjust grayscaleEffect = new ColorAdjust();
-    private Popup popup;
-    private Popup popupMarca;
-    private Popup popupUnidade;
-    private Popup popupFornecedor;
-    private Popup currentPopup;
 
+    private Popup popup, popupMarca, popupUnidade, popupFornecedor, currentPopup;
     private ImageSelectionUtil imageSelectionUtil;
-    private PopupUtil marcaPopupUtil;
-    private PopupUtil categoriaPopupUtil;
-    private PopupUtil unidadePopupUtil;
-
-    private PopupUtil fornecedorPopupUtil;
+    private PopupUtil marcaPopupUtil, categoriaPopupUtil, unidadePopupUtil, fornecedorPopupUtil;
     @FXML
-    private TextField marcaSearchField;
-    @FXML
-    private TextField categoriaSearchField;
+    private CheckBox checkboxMargemLucro;
 
-    @FXML
-    private TextField unidadeSearchField;
+    boolean checkboxCondicao;
 
-    @FXML
-    private TextField fornecedorSearchField;
+    public boolean isCheckboxCondicao() {
+        return checkboxCondicao;
+    }
 
-    // Método de inicialização
+    public void setCheckboxCondicao(boolean checkboxCondicao) {
+        this.checkboxCondicao = checkboxCondicao;
+    }
+
     public void initialize() {
-        // Inicialize utilitários de seleção de imagem
         imageSelectionUtil = new ImageSelectionUtil(imageView, messageLabel, messageLabelOne, anchorPane);
         imageSelectionUtil.initialize();
         marcaPopupUtil = new MarcaPopupUtil(marcaTextField, marcaSearchField);
         categoriaPopupUtil = new CategoriaPopupUtil(categoriaTextField, categoriaSearchField);
         unidadePopupUtil = new UnidadePopupUtil(unidadeTextField, unidadeSearchField);
         fornecedorPopupUtil = new FornecedorPopupUtil(fornecedorTextField, fornecedorSearchField);
+        validateNumericFields();
+        validatePriceFields();
+        setCheckboxCondicao(true);
+        campoMargemLucro.setDisable(checkboxCondicao);
+        campoPrecoVenda.setDisable(!checkboxCondicao);
     }
 
+    @FXML
+    public void selectBoxMargem(){
+        if(checkboxMargemLucro.isSelected()){
+            campoMargemLucro.setDisable(!checkboxCondicao);
+            campoPrecoVenda.setDisable(checkboxCondicao);
+        }else{
+            campoMargemLucro.setDisable(checkboxCondicao);
+            campoPrecoVenda.setDisable(!checkboxCondicao);
+        }
+    }
+
+    @FXML
+    public void calculoPrecoVenda(KeyEvent event){
+        campoPrecoCusto.setOnKeyTyped(this::handleKeyTyped);
+        campoMargemLucro.setOnKeyTyped(this::handleKeyTyped);
+    }
+    private void handleKeyTyped(KeyEvent event) {
+        Platform.runLater(() -> {
+            Long precoCusto = Long.valueOf(campoPrecoCusto.getText());
+            Long margemVenda;
+            if (checkboxMargemLucro.isSelected()){
+                margemVenda = Long.valueOf(campoMargemLucro.getText());
+            }else{
+                margemVenda = 0l;
+            }
+            Long precoVenda = precoCusto + ((precoCusto * margemVenda) / 100);
+            campoPrecoVenda.setText(String.valueOf(precoVenda));
+        });
+    }
 
     @FXML
     public void selectImage(MouseEvent event) {
-        // Método acionado ao selecionar uma imagem
         imageSelectionUtil.selectImage(event);
     }
 
     @FXML
     public void setImage(File file) {
-        // Define a imagem selecionada no ImageView
         imageSelectionUtil.setImage(file);
     }
 
     @FXML
     public void onMouseEntered(MouseEvent event) {
-        // Método acionado quando o mouse entra na área da imagem
         imageSelectionUtil.onMouseEntered();
     }
 
     @FXML
     public void onMouseExited(MouseEvent event) {
-        // Método acionado quando o mouse sai da área da imagem
         imageSelectionUtil.onMouseExited();
     }
 
@@ -118,16 +133,23 @@ public class CadastroProdutoController {
         categoriaPopupUtil.togglePopup();
     }
 
-    // Método para cancelar ação
+    private void validateNumericFields() {
+        NumericTextFieldValidator.validateNumericTextField(campoPesoLiquido);
+        NumericTextFieldValidator.validateNumericTextField(campoPesoBruto);
+        NumericTextFieldValidator.validateNumericTextField(campoCodigoBarras);
+        NumericTextFieldValidator.validateNumericTextField(campoCodigoReferencia);
+    }
+
+    private void validatePriceFields() {
+        PriceTextFieldFormatter.formatPriceTextField(campoPrecoCusto);
+        PriceTextFieldFormatter.formatPriceTextField(campoPrecoVenda);
+        PriceTextFieldFormatter.formatPriceTextField(campoMargemLucro);
+    }
+
     @FXML
     void cancelarAcao(ActionEvent event) {
-        // Obtém a referência ao nó (botão "Cancelar") que disparou o evento
         Node source = (Node) event.getSource();
-
-        // Obtém a referência à janela atual
         Stage stage = (Stage) source.getScene().getWindow();
-
-        // Fecha a janela
         stage.close();
     }
 }

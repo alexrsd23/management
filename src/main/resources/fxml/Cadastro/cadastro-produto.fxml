@@ -19,7 +19,7 @@
             <AnchorPane layoutX="25.0" layoutY="150.0">
                <children>
                   <HBox>
-                     <TextField  id="campoDropdown" fx:id="categoriaTextField"/>
+                     <TextField  id="campoDropdown" fx:id="categoriaTextField" mouseTransparent="true" focusTraversable="false"/>
                      <Button id="botaoDropdown" text="▼" onAction="#alternarPopup" layoutX="165.0" />
                   </HBox>
                </children>
@@ -29,7 +29,7 @@
             <AnchorPane layoutX="275.0" layoutY="150.0">
                <children>
                   <HBox>
-                     <TextField  id="campoDropdown" fx:id="marcaTextField"/>
+                     <TextField  id="campoDropdown" fx:id="marcaTextField" mouseTransparent="true" focusTraversable="false"/>
                      <Button id="botaoDropdownMarca" text="▼" onAction="#alternarPopupMarca" layoutX="165.0"/>
                   </HBox>
                </children>
@@ -39,20 +39,20 @@
             <AnchorPane layoutX="525.0" layoutY="150.0">
                <children>
                   <HBox>
-                     <TextField  id="campoDropdown" fx:id="unidadeTextField"/>
+                     <TextField  id="campoDropdown" fx:id="unidadeTextField" mouseTransparent="true" focusTraversable="false"/>
                      <Button id="botaoDropdownUnidade" text="▼" onAction="#alternarPopupUnidade" layoutX="165.0"/>
                   </HBox>
                </children>
             </AnchorPane>
 
             <Text id="tituloCategoria"  layoutX="25.0" layoutY="230.0" text="Peso Liquido" />
-            <TextField id="campogeral"  layoutX="25.0" layoutY="240.0" />
+            <TextField id="campogeral" fx:id="campoPesoLiquido" layoutX="25.0" layoutY="240.0" />
 
             <Text id="tituloCategoria"  layoutX="275.0" layoutY="230.0" text="Peso Bruto" />
-            <TextField id="campogeral"  layoutX="275.0" layoutY="240.0" />
+            <TextField id="campogeral" fx:id="campoPesoBruto"  layoutX="275.0" layoutY="240.0" />
 
             <Text id="tituloCategoria"  layoutX="525.0" layoutY="230.0" text="Código de Barras" />
-            <TextField id="campogeral"  layoutX="525.0" layoutY="240.0" />
+            <TextField id="campogeral"  fx:id="campoCodigoBarras" layoutX="525.0" layoutY="240.0" />
 
             <Text id="tituloCategoria" layoutX="25.0" layoutY="310.0" text="Fornecedor" />
             <AnchorPane layoutX="25.0" layoutY="320.0">
@@ -65,16 +65,16 @@
             </AnchorPane>
 
             <Text id="tituloCategoria"  layoutX="525.0" layoutY="310.0" text="Código de Referência" />
-            <TextField id="campogeral"  layoutX="525.0" layoutY="320.0" />
+            <TextField id="campogeral"  layoutX="525.0" fx:id="campoCodigoReferencia" layoutY="320.0" />
 
             <Text id="tituloCategoria"  layoutX="25.0" layoutY="400.0" text="Preço de Custo" />
-            <TextField id="campogeral"  layoutX="25.0" layoutY="410.0" />
+            <TextField id="campogeral"  layoutX="25.0" fx:id="campoPrecoCusto" layoutY="410.0" onKeyPressed="#calculoPrecoVenda" />
 
             <Text id="tituloCategoria"  layoutX="525.0" layoutY="400.0" text="Preço de Venda" />
-            <TextField id="campogeral"  layoutX="525.0" layoutY="410.0" />
+            <TextField id="campogeral" layoutX="525.0" fx:id="campoPrecoVenda" layoutY="410.0"  />
 
-            <CheckBox id="tituloCategoria"  alignment="CENTER" layoutX="275.0" layoutY="380.0" text="Margem de Lucro" />
-            <TextField id="campogeral"  layoutX="275.0" layoutY="410.0" />
+            <CheckBox fx:id="checkboxMargemLucro" layoutX="275.0" layoutY="380.0" text="Margem de Lucro" onAction="#selectBoxMargem"/>
+            <TextField id="campogeral" fx:id="campoMargemLucro" layoutX="275.0" layoutY="410.0" />
 
             <Text id="tituloCategoria"  layoutX="775" layoutY="310.0" text="Observações" />
             <TextArea id="TextAreaInicio" layoutX="775.0" layoutY="320.0" prefHeight="125.0" prefWidth="180.0" />

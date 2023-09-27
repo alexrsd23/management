@@ -115,6 +115,10 @@ TextField:focused {
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.08), 4, 0, 1, 2);
 }
 
+#campoDropdown:disabled {
+    -fx-text-fill: #000;
+}
+
 #painelImagem {
     -fx-background-color: #E9E9E9;
     -fx-border-radius: 6px;
