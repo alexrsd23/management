@@ -2,12 +2,10 @@ package com.rosendo.company.Controllers.FXMLControllers.Fornecedor;
 
 import com.rosendo.company.Utils.ApiRequestUtil;
 import com.rosendo.company.Utils.FornecedorUtils;
+import com.rosendo.company.Validations.FXMLControllers.CNPJFormatter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -17,7 +15,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.Objects;
 
 public class CadastroFornecedorController {
 
@@ -30,6 +27,8 @@ public class CadastroFornecedorController {
 
     public int idEndereco;
 
+    private boolean formatting = false;
+
     public int getIdEndereco() {
         return idEndereco;
     }
@@ -39,8 +38,8 @@ public class CadastroFornecedorController {
     }
 
     @FXML
-    public void initialize(Stage primaryStage) throws Exception {
-        loadFXMLWindow();
+    public void initialize() throws Exception {
+        CNPJFormatter.formatCNPJTextField(cnpj);
     }
 
     @FXML
@@ -70,7 +69,6 @@ public class CadastroFornecedorController {
     void atualizarEndereco(ActionEvent event) throws IOException, JSONException {
         FornecedorUtils.atualizarEndereco(this);
     }
-
     @FXML
     public void atualizarLayout() {
         buttonAtualizarEndereco.setVisible(true);
@@ -93,16 +91,5 @@ public class CadastroFornecedorController {
         Node source = (Node) event.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
-    }
-
-    private void loadFXMLWindow() throws IOException {
-        Stage primaryStage = new Stage();
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/Fornecedor/cadastro-fornecedor.fxml")));
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Css/style-cadastro-fornecedor.css")).toExternalForm());
-
-        primaryStage.setResizable(false);
-        primaryStage.setScene(scene);
-        primaryStage.show();
     }
 }

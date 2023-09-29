@@ -23,18 +23,18 @@ public class CadastroEnderecoController {
     @FXML
     private Button buttonAction, buttonActionUpdate;
 
-    private int enderecoId;
+    private String enderecoId;
     private CadastroFornecedorController parentController;
 
     public void setParentController(CadastroFornecedorController parentController) {
         this.parentController = parentController;
     }
 
-    public int getEnderecoId() {
+    public String getEnderecoId() {
         return enderecoId;
     }
 
-    public void setEnderecoId(int enderecoId) {
+    public void setEnderecoId(String enderecoId) {
         this.enderecoId = enderecoId;
     }
 
@@ -44,7 +44,7 @@ public class CadastroEnderecoController {
         JSONObject response = ApiRequestUtil.sendPostRequest("/adress", requestData);
 
         if (response != null && response.has("id")) {
-            setEnderecoId(response.getInt("id"));
+            setEnderecoId(String.valueOf(response.getInt("id")));
             mostrarAlerta("Endereço registrado com sucesso.");
             fecharJanela(event);
         } else {
@@ -60,7 +60,7 @@ public class CadastroEnderecoController {
 
     @FXML
     void atualizarEndereco(ActionEvent event) throws JSONException {
-        EnderecoUtils.atualizarEndereco(this, enderecoId, event);
+        EnderecoUtils.atualizarEndereco(this, Integer.parseInt(enderecoId), event);
     }
 
     @FXML

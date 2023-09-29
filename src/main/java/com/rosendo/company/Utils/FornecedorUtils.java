@@ -81,16 +81,25 @@ public class FornecedorUtils {
     }
 
     private static void updateControllerWithAddress(CadastroFornecedorController controller, CadastroEnderecoController enderecoController) {
-        int enderecoId = enderecoController.getEnderecoId();
-        controller.setIdEndereco(enderecoId);
-        if (enderecoId != -1) {
-            String rua = enderecoController.obterPropriedadePeloId(enderecoId, "rua");
-            String numero = enderecoController.obterPropriedadePeloId(enderecoId, "numero");
-            String bairro = enderecoController.obterPropriedadePeloId(enderecoId, "bairro");
-            String cidade = enderecoController.obterPropriedadePeloId(enderecoId, "cidade");
-            String enderecoCompleto = rua + ", Nº " + numero + ", " + bairro + " - " + cidade;
-            controller.endereco.setText(enderecoCompleto);
-            controller.atualizarLayout();
+        String enderecoId = enderecoController.getEnderecoId();
+
+        if (enderecoId == null || enderecoId.isEmpty()) {
+            controller.endereco.setText("");
+        } else {
+            int enderecoIdInt = Integer.parseInt(enderecoId);
+
+            if (enderecoIdInt != -1) {
+                String rua = enderecoController.obterPropriedadePeloId(enderecoIdInt, "rua");
+                String numero = enderecoController.obterPropriedadePeloId(enderecoIdInt, "numero");
+                String bairro = enderecoController.obterPropriedadePeloId(enderecoIdInt, "bairro");
+                String cidade = enderecoController.obterPropriedadePeloId(enderecoIdInt, "cidade");
+                String enderecoCompleto = rua + ", Nº " + numero + ", " + bairro + " - " + cidade;
+                controller.endereco.setText(enderecoCompleto);
+            } else {
+                controller.endereco.setText("");
+            }
         }
+        controller.atualizarLayout();
     }
+
 }

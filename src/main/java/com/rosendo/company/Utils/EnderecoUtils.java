@@ -68,7 +68,7 @@ public class EnderecoUtils {
     }
 
     private static void updateEnderecoPorId(CadastroEnderecoController controller, int idEndereco) throws JSONException {
-        controller.setEnderecoId(idEndereco);
+        controller.setEnderecoId(String.valueOf(idEndereco));
         JSONObject endereco = retrieveEnderecoById(idEndereco, controller);
 
         controller.rua.setText(endereco.getString("street"));
