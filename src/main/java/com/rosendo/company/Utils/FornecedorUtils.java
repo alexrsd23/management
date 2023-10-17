@@ -25,19 +25,19 @@ public class FornecedorUtils {
         String email = controller.emailFornecedor.getText();
         String representative = controller.representante.getText();
         String stateRegistration = controller.inscricao.getText();
-        JSONObject address = endereco;
+        JSONObject adress = endereco;
         String comments = controller.observacoes.getText();
 
         return new JSONObject()
                 .put("name", name)
                 .put("phoneOne", phoneOne)
                 .put("phoneTwo", phoneTwo)
-                .put("CNPJ", CNPJ)
-                .put("email", email)
-                .put("representative", representative)
                 .put("stateRegistration", stateRegistration)
-                .put("address", address)
-                .put("comments", comments);
+                .put("email", email)
+                .put("comments", comments)
+                .put("representative", representative)
+                .put("adress", adress)
+                .put("cnpj", CNPJ);
     }
 
     public static void openCadastroEnderecoWindow(CadastroFornecedorController controller) {
@@ -95,6 +95,7 @@ public class FornecedorUtils {
                 String cidade = enderecoController.obterPropriedadePeloId(enderecoIdInt, "cidade");
                 String enderecoCompleto = rua + ", Nº " + numero + ", " + bairro + " - " + cidade;
                 controller.endereco.setText(enderecoCompleto);
+                controller.setIdEndereco(enderecoIdInt);
             } else {
                 controller.endereco.setText("");
             }
